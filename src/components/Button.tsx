@@ -7,7 +7,7 @@ interface ButtonProps {
 export function Button({ children, borderRadius = 'full', fontSize = 'normal' }: ButtonProps) {
 	return (
 		<button
-			className={`flex items-center justify-center bg-primary-cyan text-white px-6 py-2 ${
+			className={`flex items-center justify-center bg-primary-cyan text-white px-8 py-3 ${
 				borderRadius === 'full' ? 'rounded-full' : 'rounded-md'
 			}`}
 		>

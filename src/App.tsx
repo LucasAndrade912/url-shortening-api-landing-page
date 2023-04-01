@@ -1,9 +1,11 @@
 import { Header } from './components/Header';
+import { Presentation } from './components/Presentation';
 
 export function App() {
 	return (
-		<div className="px-40 pt-12">
+		<>
 			<Header />
-		</div>
+			<Presentation />
+		</>
 	);
 }
