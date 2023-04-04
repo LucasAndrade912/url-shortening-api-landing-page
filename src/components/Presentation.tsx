@@ -3,7 +3,7 @@ import { Button } from './Button';
 
 export function Presentation() {
 	return (
-		<section className="flex items-center justify-between">
+		<section className="flex items-center justify-between px-40">
 			<div className="whitespace-nowrap">
 				<h1 className="font-bold text-7xl text-neutral-very-dark-blue leading-tight">
 					More than just <br />

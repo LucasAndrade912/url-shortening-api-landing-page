@@ -7,6 +7,9 @@ export default {
 			mobile: '375px',
 		},
 		extend: {
+			backgroundImage: {
+				'bottom-half': 'linear-gradient(to bottom, transparent 50%, #EFF1F7 50%)',
+			},
 			colors: {
 				primary: {
 					cyan: 'hsl(180, 66%, 49%)',
