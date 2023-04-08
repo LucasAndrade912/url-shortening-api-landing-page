@@ -27,7 +27,7 @@ export function Header() {
 			<div className="flex gap-8 items-center">
 				<Link href="#">Login</Link>
 
-				<Button>Sign Up</Button>
+				<Button size="small">Sign Up</Button>
 			</div>
 		</header>
 	);
