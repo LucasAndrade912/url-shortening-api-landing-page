@@ -1,19 +1,33 @@
-interface ButtonProps {
-	children: React.ReactNode;
+import { ButtonHTMLAttributes } from 'react';
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+	size?: 'normal' | 'small';
 	borderRadius?: 'full' | 'rounded';
-	fontSize?: 'small' | 'normal';
 }
 
-export function Button({ children, borderRadius = 'full', fontSize = 'normal' }: ButtonProps) {
+export function Button({
+	children,
+	size = 'normal',
+	borderRadius = 'full',
+	...props
+}: ButtonProps) {
 	return (
 		<button
-			className={`flex items-center justify-center bg-primary-cyan text-white px-8 py-3 ${
-				borderRadius === 'full' ? 'rounded-full' : 'rounded-md'
-			}`}
+			className={`
+				flex
+				items-center
+				justify-center
+				bg-primary-cyan
+				text-white
+				py-3
+				transition-colors
+				hover:bg-[#96ecec]
+				${size === 'normal' ? 'w-40' : 'w-24'}
+				${borderRadius === 'full' ? 'rounded-full' : 'rounded-md'}
+			`}
+			{...props}
 		>
-			<span className={`font-bold ${fontSize === 'normal' ? 'text-base' : 'text-xs'}`}>
-				{children}
-			</span>
+			<span className={`font-bold ${size === 'normal' ? 'text-base' : 'text-xs'}`}>{children}</span>
 		</button>
 	);
 }
