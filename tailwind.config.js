@@ -20,6 +20,7 @@ export default {
 				},
 				neutral: {
 					gray: 'hsl(0, 0%, 75%)',
+					'light-gray': '#EFF1F7',
 					'grayish-violet': 'hsl(257, 7%, 63%)',
 					'very-dark-blue': 'hsl(255, 11%, 22%)',
 					'very-dark-violet': 'hsl(260, 8%, 14%)',
