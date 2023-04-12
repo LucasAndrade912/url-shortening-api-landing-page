@@ -22,12 +22,12 @@ export function Button({
 				py-3
 				transition-colors
 				hover:bg-[#96ecec]
-				${size === 'normal' ? 'w-40' : 'w-24'}
+				${size === 'normal' ? 'w-40' : 'w-28'}
 				${borderRadius === 'full' ? 'rounded-full' : 'rounded-md'}
 			`}
 			{...props}
 		>
-			<span className={`font-bold ${size === 'normal' ? 'text-base' : 'text-xs'}`}>{children}</span>
+			<span className={`font-bold ${size === 'normal' ? 'text-base' : 'text-sm'}`}>{children}</span>
 		</button>
 	);
 }
