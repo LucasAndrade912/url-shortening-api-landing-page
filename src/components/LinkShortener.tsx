@@ -21,7 +21,7 @@ export function LinkShortener() {
 	return (
 		<section className="bg-bottom-half px-40 mt-12">
 			<div className="bg-primary-dark-violet bg-[url('./assets/bg-shorten-desktop.svg')] rounded-lg p-12">
-				<div className="flex gap-6">
+				<div className="flex gap-6 relative">
 					<input
 						type="text"
 						placeholder="Shorten a link here..."
@@ -44,6 +44,12 @@ export function LinkShortener() {
 					<Button borderRadius="rounded" onClick={shortenLink}>
 						Shorten It!
 					</Button>
+
+					{error && (
+						<span className="absolute -bottom-8 text-sm italic text-secondary-red">
+							Please add a link
+						</span>
+					)}
 				</div>
 			</div>
 		</section>
