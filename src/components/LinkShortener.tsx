@@ -2,20 +2,30 @@ import { useState } from 'react';
 
 import { Button } from './Button';
 
+import { useLocalStorage } from '../hook/useLocalStorage';
+import { shrtcodeApi } from '../services/shrtcodeApi';
+
 const errorStyle =
 	'outline outline-2 outline-secondary-red placeholder:text-secondary-red placeholder:opacity-60';
 
 export function LinkShortener() {
 	const [link, setLink] = useState('');
 	const [error, setError] = useState(false);
+	const [links, setLinks] = useLocalStorage('@links');
 
 	async function shortenLink() {
-		if (link.trim() === '') {
+		if (link === '') {
 			setError(true);
 			return;
 		}
 
-		console.log(link);
+		const { data } = await shrtcodeApi.get(`/shorten?url=${link}`);
+		const shortLink = data.result.full_short_link;
+		const copyLinks = [...links];
+
+		copyLinks.push([link, shortLink]);
+		setLinks(copyLinks);
+		setLink('');
 	}
 
 	return (
@@ -37,7 +47,7 @@ export function LinkShortener() {
 							${error && errorStyle}
 						`}
 						value={link}
-						onChange={(e) => setLink(e.target.value)}
+						onChange={(e) => setLink(e.target.value.trim())}
 						onFocus={() => setError(false)}
 					/>
 
