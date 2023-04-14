@@ -36,7 +36,7 @@ export function ShortenedLink({ originalLink, shortenedLink }: ShortenedLinkProp
 				<Button
 					size="small"
 					borderRadius="rounded"
-					style={{ backgroundColor: isCopied ? 'hsl(257, 27%, 26%)' : 'hsl(180, 66%, 49%)' }}
+					bgColor={isCopied ? 'purple' : 'blue'}
 					onClick={() => copyShortenedLink(shortenedLink)}
 				>
 					{isCopied ? 'Copied!' : 'Copy'}

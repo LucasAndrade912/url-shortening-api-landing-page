@@ -3,12 +3,14 @@ import { ButtonHTMLAttributes } from 'react';
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	size?: 'normal' | 'small';
 	borderRadius?: 'full' | 'rounded';
+	bgColor?: 'blue' | 'purple';
 }
 
 export function Button({
 	children,
 	size = 'normal',
 	borderRadius = 'full',
+	bgColor = 'blue',
 	...props
 }: ButtonProps) {
 	return (
@@ -17,11 +19,11 @@ export function Button({
 				flex
 				items-center
 				justify-center
-				bg-primary-cyan
 				text-white
 				py-3
 				transition-colors
-				hover:bg-[#96ecec]
+				disabled:opacity-60
+				${bgColor === 'blue' ? 'bg-primary-cyan hover:bg-[#96ecec]' : 'bg-primary-dark-violet'}
 				${size === 'normal' ? 'w-40' : 'w-28'}
 				${borderRadius === 'full' ? 'rounded-full' : 'rounded-md'}
 			`}

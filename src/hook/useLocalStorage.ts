@@ -1,7 +1,10 @@
 import { useCallback, useState } from 'react';
 
-export function useLocalStorage(key: string, initialValue = '') {
-	const [state, setState] = useState(() => {
+export function useLocalStorage<T>(
+	key: string,
+	initialValue: T = '' as T
+): [T, (value: T) => void] {
+	const [state, setState] = useState<T>(() => {
 		try {
 			const storadValue = localStorage.getItem(key);
 
@@ -12,7 +15,7 @@ export function useLocalStorage(key: string, initialValue = '') {
 	});
 
 	const setValue = useCallback(
-		(value: unknown) => {
+		(value: T) => {
 			try {
 				setState(value);
 				localStorage.setItem(key, JSON.stringify(value));

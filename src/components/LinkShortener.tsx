@@ -1,17 +1,20 @@
 import { useState } from 'react';
 
-import { Button } from './Button';
-
-import { useLocalStorage } from '../hook/useLocalStorage';
 import { shrtcodeApi } from '../services/shrtcodeApi';
+import { Button } from './Button';
 
 const errorStyle =
 	'outline outline-2 outline-secondary-red placeholder:text-secondary-red placeholder:opacity-60';
 
-export function LinkShortener() {
+interface LinkShortenerProps {
+	links: string[][];
+	setLinks: (value: string[][]) => void;
+}
+
+export function LinkShortener({ links, setLinks }: LinkShortenerProps) {
 	const [link, setLink] = useState('');
 	const [error, setError] = useState(false);
-	const [links, setLinks] = useLocalStorage('@links');
+	const [isLoading, setIsLoading] = useState(false);
 
 	async function shortenLink() {
 		if (link === '') {
@@ -19,13 +22,16 @@ export function LinkShortener() {
 			return;
 		}
 
+		setIsLoading(true);
 		const { data } = await shrtcodeApi.get(`/shorten?url=${link}`);
-		const shortLink = data.result.full_short_link;
+		const shortLink: string = data.result.full_short_link;
+
 		const copyLinks = [...links];
 
 		copyLinks.push([link, shortLink]);
 		setLinks(copyLinks);
 		setLink('');
+		setIsLoading(false);
 	}
 
 	return (
@@ -40,18 +46,21 @@ export function LinkShortener() {
 							rounded-lg
 							py-3
 							px-6
+							bg-white
 							focus:outline
 							focus:outline-primary-cyan
 							focus:outline-2
 							focus:outline-offset-0
+							disabled:opacity-60
 							${error && errorStyle}
 						`}
 						value={link}
 						onChange={(e) => setLink(e.target.value.trim())}
 						onFocus={() => setError(false)}
+						disabled={isLoading}
 					/>
 
-					<Button borderRadius="rounded" onClick={shortenLink}>
+					<Button borderRadius="rounded" disabled={isLoading} onClick={shortenLink}>
 						Shorten It!
 					</Button>
 
