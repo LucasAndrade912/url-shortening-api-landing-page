@@ -3,8 +3,7 @@ export default {
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		screens: {
-			desktop: '1440px',
-			mobile: '375px',
+			mobile: { max: '375px' },
 		},
 		extend: {
 			backgroundImage: {
