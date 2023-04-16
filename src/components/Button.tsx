@@ -24,12 +24,14 @@ export function Button({
 				transition-colors
 				disabled:opacity-60
 				${bgColor === 'blue' ? 'bg-primary-cyan hover:bg-[#96ecec]' : 'bg-primary-dark-violet'}
-				${size === 'normal' ? 'w-40' : 'w-28'}
+				${size === 'normal' ? 'w-40 mobile:w-48' : 'w-28'}
 				${borderRadius === 'full' ? 'rounded-full' : 'rounded-md'}
 			`}
 			{...props}
 		>
-			<span className={`font-bold ${size === 'normal' ? 'text-base' : 'text-sm'}`}>{children}</span>
+			<span className={`font-bold ${size === 'normal' ? 'text-base mobile:text-lg' : 'text-sm'}`}>
+				{children}
+			</span>
 		</button>
 	);
 }

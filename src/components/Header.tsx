@@ -5,7 +5,7 @@ import { Link } from './Link';
 
 export function Header() {
 	return (
-		<header className="flex justify-between items-center mb-24 mt-12 px-40 mobile:px-6">
+		<header className="flex justify-between items-center mb-24 mt-12 px-40 mobile:px-6 mobile:mb-14">
 			<img src={logo} alt="Shortly Logo" className="object-contain" />
 
 			<button className="hidden mobile:block">
