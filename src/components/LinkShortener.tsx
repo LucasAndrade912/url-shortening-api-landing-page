@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { shrtcodeApi } from '../services/shrtcodeApi';
 import { Button } from './Button';
@@ -15,6 +15,7 @@ export function LinkShortener({ links, setLinks }: LinkShortenerProps) {
 	const [link, setLink] = useState('');
 	const [error, setError] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
 	async function shortenLink() {
 		if (link === '') {
@@ -33,6 +34,18 @@ export function LinkShortener({ links, setLinks }: LinkShortenerProps) {
 		setLink('');
 		setIsLoading(false);
 	}
+
+	useEffect(() => {
+		const handleWindowWidth = () => {
+			setWindowWidth(window.innerWidth);
+		};
+
+		window.addEventListener('resize', handleWindowWidth);
+
+		return () => {
+			window.removeEventListener('resize', handleWindowWidth);
+		};
+	}, []);
 
 	return (
 		<section className="bg-bottom-half px-40 mt-12 mobile:px-6 mobile:mt-24">
@@ -62,7 +75,12 @@ export function LinkShortener({ links, setLinks }: LinkShortenerProps) {
 						disabled={isLoading}
 					/>
 
-					<Button size="full" borderRadius="rounded" disabled={isLoading} onClick={shortenLink}>
+					<Button
+						size={windowWidth <= 375 ? 'full' : 'normal'}
+						borderRadius="rounded"
+						disabled={isLoading}
+						onClick={shortenLink}
+					>
 						Shorten It!
 					</Button>
 
