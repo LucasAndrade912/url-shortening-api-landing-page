@@ -4,7 +4,7 @@ import { shrtcodeApi } from '../services/shrtcodeApi';
 import { Button } from './Button';
 
 const errorStyle =
-	'outline outline-2 outline-secondary-red placeholder:text-secondary-red placeholder:opacity-60';
+	'outline outline-2 outline-secondary-red placeholder:text-secondary-red placeholder:opacity-60 mobile:mb-7';
 
 interface LinkShortenerProps {
 	links: string[][];
@@ -35,9 +35,9 @@ export function LinkShortener({ links, setLinks }: LinkShortenerProps) {
 	}
 
 	return (
-		<section className="bg-bottom-half px-40 mt-12">
-			<div className="bg-primary-dark-violet bg-[url('./assets/bg-shorten-desktop.svg')] rounded-lg p-12">
-				<div className="flex gap-6 relative">
+		<section className="bg-bottom-half px-40 mt-12 mobile:px-6 mobile:mt-24">
+			<div className="bg-primary-dark-violet bg-[url('./assets/bg-shorten-desktop.svg')] rounded-lg p-12 mobile:p-6 mobile:bg-[url('./assets/bg-shorten-mobile.svg')] mobile:bg-no-repeat mobile:bg-right-top">
+				<div className="flex gap-6 relative mobile:flex-col mobile:gap-4">
 					<input
 						type="text"
 						placeholder="Shorten a link here..."
@@ -52,6 +52,8 @@ export function LinkShortener({ links, setLinks }: LinkShortenerProps) {
 							focus:outline-2
 							focus:outline-offset-0
 							disabled:opacity-60
+							mobile:px-4
+							mobile:text-base
 							${error && errorStyle}
 						`}
 						value={link}
@@ -60,12 +62,12 @@ export function LinkShortener({ links, setLinks }: LinkShortenerProps) {
 						disabled={isLoading}
 					/>
 
-					<Button borderRadius="rounded" disabled={isLoading} onClick={shortenLink}>
+					<Button size="full" borderRadius="rounded" disabled={isLoading} onClick={shortenLink}>
 						Shorten It!
 					</Button>
 
 					{error && (
-						<span className="absolute -bottom-8 text-sm italic text-secondary-red">
+						<span className="absolute -bottom-8 text-sm italic text-secondary-red mobile:top-14">
 							Please add a link
 						</span>
 					)}
