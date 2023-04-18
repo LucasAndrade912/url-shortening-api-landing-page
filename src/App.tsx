@@ -19,7 +19,7 @@ export function App() {
 
 			{links.length > 0 && (
 				<div className="bg-neutral-light-gray">
-					<div className="pt-5 flex flex-col px-40 gap-3">
+					<div className="pt-5 flex flex-col px-40 gap-3 mobile:px-6">
 						{links.map((link, index) => (
 							<ShortenedLink key={index} originalLink={link[0]} shortenedLink={link[1]} />
 						))}
