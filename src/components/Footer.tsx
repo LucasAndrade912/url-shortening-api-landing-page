@@ -5,11 +5,11 @@ import twitterLogo from '../assets/icon-twitter.svg';
 
 export function Footer() {
 	return (
-		<footer className="bg-neutral-very-dark-violet px-40 pt-20 pb-16 flex justify-between">
+		<footer className="bg-neutral-very-dark-violet px-40 pt-20 pb-16 flex justify-between mobile:flex-col mobile:px-6 mobile:text-center">
 			<h3 className="text-3xl font-bold text-white">Shortly</h3>
 
-			<div className="flex items-start gap-28">
-				<div className="flex gap-14">
+			<div className="flex items-start gap-28 mobile:flex-col mobile:items-center mobile:gap-10 mobile:pt-14">
+				<div className="flex gap-14 mobile:flex-col">
 					<div>
 						<h4 className="text-white text-sm font-bold mb-6">Features</h4>
 
