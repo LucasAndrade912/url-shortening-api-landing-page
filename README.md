@@ -8,11 +8,13 @@
 
 ## 🖥️ Versão Web
 
-<img src="layouts/web.png" alt="Web Layout" />
+<img src="layouts/web1.png" alt="Web Layout 1" />
+<img src="layouts/web2.png" alt="Web Layout 2" />
 
 ## 📱 Versão Mobile
 
-<img src="layouts/mobile.jpg" alt="Mobile Layout 1" width="250" />
+<span><img src="layouts/mobile1.jpg" alt="Mobile Layout 1" width="250" /></span>
+<span><img src="layouts/mobile2.jpg" alt="Mobile Layout 2" width="250" /></span>
 
 ## 🛠️ Techs
 
